@@ -11,7 +11,7 @@ filenameSkinWars = 'skinwars-' + time.strftime('%Y-%m-%d-%H-%M-%S') + '.csv'
 marketplace = requests.get('https://api.cryptoroyale.one/api/marketplace').json()
 
 df = pd.DataFrame(marketplace['on_sale'])
-df.to_csv(filenameMarketplace, encoding='utf-8', index=False)
+df.to_csv('marketplace/' + filenameMarketplace, encoding='utf-8', index=False)
 
 skinWarsDate = datetime.datetime.today() - datetime.timedelta(days=1)
 
@@ -21,5 +21,5 @@ parametersSkinWars = {
 
 skinwars = requests.get('https://api.cryptoroyale.one/api/skinwars', params=parametersSkinWars).json()
 
-df = pd.DataFrame(skinwars['clans'])
-df.to_csv(filenameSkinWars, encoding='utf-8', index=False)
+df = pd.DataFrame(skinwars['clans']).transpose()
+df.to_csv('skinwars/' + filenameSkinWars, encoding='utf-8', index=False)
