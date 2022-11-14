@@ -21,8 +21,7 @@ jobs:
         run: python -m pip install --upgrade pip requests
       - name: execute py script
         run: |
-          python cr.py
-          
+          python cr.py   
       - name: Commit files
         id: commit
         run: |
