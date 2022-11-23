@@ -1,8 +1,7 @@
-import os
 import pandas as pd
 
 # einzelne datei einlesen
-df = pd.read_csv("marketplace-2022-11-23-03-26-03.csv", sep=";")
+df = pd.read_csv("marketplace-2022-11-23-03-26-03.csv", sep=",")
 
 # durchschnittlichen preis ermitteln
 print(df[df["filename"]])
