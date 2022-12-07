@@ -1,0 +1,25 @@
+name: watchdog
+
+on:
+  schedule:
+    - cron: "* */1 * * *" #runs at hourly everyday
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repo content
+        uses: actions/checkout@v2 # checkout the repository content to github runner.
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8 #install the python needed
+      - name: Install Python dependencies
+        run: python -m pip install --upgrade pip pandas
+      - name: Install Python dependencies
+        run: python -m pip install --upgrade pip requests
+      - name: execute py script
+        run: |
+          python watchdog.py   
+      - uses: stefanzweifel/git-auto-commit-action@v4
