@@ -3,7 +3,7 @@ import requests
 import time
 import datetime
 
-watchdog = ['ufo', 'moon']
+watchdog = ['ufo', 'moon','bomb']
 
 def marketplaceanfuegen(df):
     datum = time.strftime('%Y-%m-%d-%H-%M-%S')
