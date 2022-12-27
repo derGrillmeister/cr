@@ -12,7 +12,7 @@ def skinwarsanfuegen(df):
 def marketplaceanfuegen(df):
     datum = time.strftime('%Y-%m-%d')
     df["date"] = datum
-    ausgabe = pd.DataFrame(df.sort_values("on_sale_price").groupby("name", as_index=False).first())
+    ausgabe = pd.DataFrame(df.sort_values("on_sale_price", ascending=True).groupby("name", as_index=False).first())
     ausgabe[["rarity","name","date","on_sale_price"]].to_csv("marketplace/marketplace.csv", mode="a", decimal=",", header=False, index=False)
     
     
