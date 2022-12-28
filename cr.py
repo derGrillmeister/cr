@@ -12,8 +12,8 @@ def skinwarsanfuegen(df):
 def marketplaceanfuegen(df):
     datum = time.strftime('%Y-%m-%d')
     df["date"] = datum
-    df['on_sale_price'].astype('float')
-    ausgabe = pd.DataFrame(df.sort_values("on_sale_price", ascending=True).groupby("name", as_index=False).first())
+    df['on_sale_price'] = pd.to_numeric(df['on_sale_price'],errors = 'coerce')
+    ausgabe = df.loc[df.groupby('name')['on_sale_price'].idxmin()]
     ausgabe[["rarity","name","date","on_sale_price"]].to_csv("marketplace/marketplace.csv", mode="a", decimal=",", header=False, index=False)
     
     
